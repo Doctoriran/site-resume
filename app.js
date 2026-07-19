@@ -1,4 +1,3 @@
-// Language pack (EN / FA)
 const i18n = {
   en: {
     kicker: "Portfolio / Musician & Full-Stack Learner",
@@ -104,6 +103,7 @@ document.addEventListener("click", e=>{
 let renderer, scene, camera, points;
 function init3D(){
   const canvas = document.getElementById("bg");
+  if (!canvas) return;
   renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
   renderer.setSize(window.innerWidth, window.innerHeight);
   scene = new THREE.Scene();
@@ -133,14 +133,19 @@ function init3D(){
 }
 function animate(){
   requestAnimationFrame(animate);
-  points.rotation.y += 0.0008;
-  points.rotation.x += 0.0004;
-  renderer.render(scene, camera);
+  if (points) {
+    points.rotation.y += 0.0008;
+    points.rotation.x += 0.0004;
+  }
+  if (renderer && scene && camera) {
+    renderer.render(scene, camera);
+  }
 }
 
 // Simple carousel
 function setupCarousel(){
   const track = document.querySelector(".track");
+  if (!track) return;
   let isDown=false, startX, scrollLeft;
   track.addEventListener("mousedown", (e)=>{isDown=true; startX=e.pageX-track.offsetLeft; scrollLeft=track.scrollLeft;});
   track.addEventListener("mouseleave", ()=> isDown=false);
@@ -154,23 +159,8 @@ function setupCarousel(){
   });
 }
 
-// Contact form (no backend needed – mailto fallback)
-function setupForm(){
-  const form = document.querySelector("form#contact");
-  const out = document.getElementById("sent");
-  form.addEventListener("submit", (e)=>{
-    e.preventDefault();
-    const data = new FormData(form);
-    const name = data.get("name");
-    const email = data.get("email");
-    const message = data.get("message");
-    const subject = encodeURIComponent("New message from portfolio");
-    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-    window.location.href = `mailto:contact@mehrad.dev?subject=${subject}&body=${body}`;
-    out.textContent = t("sent");
-    form.reset();
-  });
-}
+// Contact form - REMOVED (replaced with contact info fields)
+// function setupForm() - حذف شد چون دیگه نیازی نیست
 
 // Register SW
 if("serviceWorker" in navigator){
@@ -182,13 +172,14 @@ window.addEventListener("DOMContentLoaded", ()=>{
   setTheme(theme);
   applyLang();
   setupCarousel();
-  setupForm();
+  // setupForm(); <-- این خط رو حذف کن
   init3D();
 });
 
 // Typing effect
 (function typing(){
   const el = document.getElementById("type");
+  if (!el) return;
   const words = ["Developer", "Pianist", "Admin", "Dreamer"];
   let i=0, j=0, dir=1;
   function tick(){
@@ -216,6 +207,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     obs.observe(el);
   });
 });
+
 // ===== Contact Copy Feature =====
 document.addEventListener("DOMContentLoaded", () => {
   const fields = document.querySelectorAll(".contact-field");
