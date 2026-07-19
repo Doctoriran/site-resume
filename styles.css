@@ -168,3 +168,143 @@ input:focus, textarea:focus{outline:2px solid rgba(255,255,255,.2)}
         padding: 20px 14px !important;
     }
 }
+/* ===== Contact Card Styles ===== */
+.contact-card {
+  padding: 2rem !important;
+  border: 2px solid rgba(255, 215, 0, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+  transition: all 0.4s ease !important;
+  background: var(--card) !important;
+}
+
+.contact-card:hover {
+  border-color: rgba(255, 215, 0, 0.5) !important;
+  box-shadow: 0 12px 48px rgba(255, 215, 0, 0.08), var(--shadow) !important;
+  transform: translateY(-2px);
+}
+
+.contact-header {
+  margin-bottom: 1.8rem;
+}
+
+.contact-header h2 {
+  margin-top: 0;
+  font-size: 1.8rem;
+}
+
+.contact-header .muted {
+  margin-bottom: 0;
+  opacity: 0.7;
+}
+
+.contact-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-field::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-field:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 215, 0, 0.3);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.contact-field:hover::before {
+  opacity: 1;
+}
+
+.contact-field:active {
+  transform: scale(0.98);
+}
+
+.contact-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.contact-text {
+  font-size: 1.05rem;
+  font-weight: 400;
+  flex: 1;
+  letter-spacing: 0.3px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.copy-hint {
+  font-size: 1rem;
+  opacity: 0.3;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.contact-field:hover .copy-hint {
+  opacity: 0.8;
+  transform: scale(1.1);
+}
+
+.contact-field.copied {
+  border-color: #48cae4 !important;
+  background: rgba(72, 202, 228, 0.1) !important;
+  box-shadow: 0 0 20px rgba(72, 202, 228, 0.15) !important;
+}
+
+.contact-field.copied .copy-hint {
+  opacity: 1;
+  content: '✅';
+}
+
+.contact-footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 8px;
+  opacity: 0.6;
+  letter-spacing: 0.3px;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 640px) {
+  .contact-card {
+    padding: 1.5rem !important;
+  }
+  
+  .contact-field {
+    padding: 12px 14px;
+    gap: 10px;
+  }
+  
+  .contact-icon {
+    font-size: 1.5rem;
+    width: 30px;
+  }
+  
+  .contact-text {
+    font-size: 0.95rem;
+  }
+  
+  .copy-hint {
+    font-size: 0.85rem;
+  }
+}
