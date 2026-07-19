@@ -312,3 +312,131 @@ input:focus, textarea:focus{outline:2px solid rgba(255,255,255,.2)}
   h1 { font-size:clamp(22px,7vw,32px) }
   .sub { font-size:0.8rem }
 }
+/* ===== Focus Card (جایگزین Where I shine) ===== */
+.focus-card {
+  padding: 1.8rem !important;
+  background: linear-gradient(145deg, rgba(255,215,0,0.03), rgba(255,215,0,0.01)) !important;
+  border: 1px solid rgba(255,215,0,0.12) !important;
+}
+
+.focus-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.focus-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.focus-item:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(4px);
+  border-color: rgba(255,215,0,0.15);
+}
+
+.focus-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.focus-text {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.focus-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 12px;
+}
+
+.tool-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgba(255,123,0,0.15), rgba(255,0,110,0.15));
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+
+.focus-cta {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 12px 0 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,123,0,0.06));
+  border: 1px solid rgba(255,215,0,0.1);
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+/* ===== رفع مشکل پروژه‌ها در پیسی ===== */
+@media (min-width: 769px) {
+  .track {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+  .slide {
+    min-width: unset !important;
+    scroll-snap-align: unset !important;
+  }
+}
+
+/* ===== ریسپانسیو برای بخش Focus ===== */
+@media (max-width: 768px) {
+  .focus-items {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .focus-item {
+    padding: 8px 12px;
+  }
+  .focus-text {
+    font-size: 0.85rem;
+  }
+  .tool-badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+  .focus-cta {
+    font-size: 0.85rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 420px) {
+  .focus-item {
+    padding: 6px 10px;
+  }
+  .focus-icon {
+    font-size: 1.2rem;
+  }
+  .focus-text {
+    font-size: 0.8rem;
+  }
+  .focus-tools {
+    gap: 6px;
+  }
+  .tool-badge {
+    font-size: 0.65rem;
+    padding: 2px 8px;
+  }
+}
