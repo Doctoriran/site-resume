@@ -216,3 +216,42 @@ document.addEventListener("DOMContentLoaded", ()=>{
     obs.observe(el);
   });
 });
+// ===== Contact Copy Feature =====
+document.addEventListener("DOMContentLoaded", () => {
+  const fields = document.querySelectorAll(".contact-field");
+  
+  fields.forEach(field => {
+    field.addEventListener("click", async () => {
+      const text = field.getAttribute("data-copy");
+      if (!text) return;
+      
+      try {
+        await navigator.clipboard.writeText(text);
+        
+        // افکت کپی شدن
+        field.classList.add("copied");
+        const hint = field.querySelector(".copy-hint");
+        if (hint) hint.textContent = "✅";
+        
+        // برگشت به حالت عادی بعد از ۲ ثانیه
+        setTimeout(() => {
+          field.classList.remove("copied");
+          if (hint) hint.textContent = "📋";
+        }, 2000);
+        
+      } catch (err) {
+        console.log("Copy failed:", err);
+        // روش جایگزین برای مرورگرهای قدیمی
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        
+        field.classList.add("copied");
+        setTimeout(() => field.classList.remove("copied"), 2000);
+      }
+    });
+  });
+});
