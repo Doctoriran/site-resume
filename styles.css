@@ -308,3 +308,169 @@ input:focus, textarea:focus{outline:2px solid rgba(255,255,255,.2)}
     font-size: 0.85rem;
   }
 }
+
+/* ============================================ */
+/* ===== GLASS STATS SECTION (بخش شیشه‌ای) ===== */
+/* ============================================ */
+.glass-stats {
+  padding: 60px 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.glass-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 0 auto;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 28px 20px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+}
+
+/* حاشیه‌ی درخشان شیشه‌ای */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.03), transparent 60%);
+  pointer-events: none;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(255, 215, 0, 0.2);
+  box-shadow: 0 16px 48px rgba(255, 215, 0, 0.08), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.glass-icon {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.glass-number {
+  font-size: 3.2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.glass-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+  letter-spacing: 0.5px;
+}
+
+.glass-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, #f7971e, #ffd200);
+  margin: 10px auto;
+  border-radius: 999px;
+  opacity: 0.5;
+}
+
+.glass-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+  opacity: 0.7;
+}
+
+/* انیمیشن ورود */
+.glass-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: glassFadeIn 0.8s ease forwards;
+}
+
+.glass-card:nth-child(1) { animation-delay: 0.1s; }
+.glass-card:nth-child(2) { animation-delay: 0.2s; }
+.glass-card:nth-child(3) { animation-delay: 0.3s; }
+.glass-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes glassFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ریسپانسیو */
+@media (max-width: 1024px) {
+  .glass-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .glass-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  
+  .glass-card {
+    padding: 20px 14px;
+  }
+  
+  .glass-number {
+    font-size: 2.4rem;
+  }
+  
+  .glass-icon {
+    font-size: 2rem;
+  }
+  
+  .glass-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .glass-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .glass-card {
+    padding: 16px 10px;
+  }
+  
+  .glass-number {
+    font-size: 1.8rem;
+  }
+  
+  .glass-icon {
+    font-size: 1.6rem;
+  }
+  
+  .glass-label {
+    font-size: 0.75rem;
+  }
+  
+  .glass-sub {
+    font-size: 0.65rem;
+  }
+}
