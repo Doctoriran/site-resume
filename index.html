@@ -148,25 +148,46 @@
     </div>
   </section>
 
-  <section class="section container" id="contact">
-    <div class="grid" style="grid-template-columns: 1.2fr 1fr;">
-      <div class="reveal">
-        <h2 data-i="formTitle">Let's talk</h2>
-        <p class="muted" data-i="formSub">Business / collab / gigs</p>
-        <form id="contact">
-          <input name="name" placeholder="Your name" data-i="name" aria-label="name">
-          <input name="email" type="email" placeholder="Email" data-i="email" aria-label="email">
-          <textarea name="message" rows="5" placeholder="Message" data-i="message" aria-label="message"></textarea>
-          <button class="btn" type="submit" data-i="send">Send</button>
-          <div id="sent" class="success" style="min-height:1.2em"></div>
-        </form>
+ <section class="section container" id="contact">
+  <div class="grid" style="grid-template-columns: 1.2fr 1fr;">
+    <!-- باکس اطلاعات تماس -->
+    <div class="card reveal contact-card">
+      <div class="contact-header">
+        <h2>📬 Let's talk</h2>
+        <p class="muted">Business / collab / gigs</p>
       </div>
-      <div class="card reveal">
-        <h3>Where I shine</h3>
-        <p>Front-end craft, community ops, and music storytelling. Available for remote gigs.</p>
-        <img src="assets/logo.svg" alt="logo" style="width:100%;max-width:220px;opacity:.9"/>
+      
+      <div class="contact-field" data-copy="your-email@example.com">
+        <span class="contact-icon">📧</span>
+        <span class="contact-text">mehrad@gmail.com</span>
+        <span class="copy-hint">📋</span>
+      </div>
+
+      <div class="contact-field" data-copy="+98 912 345 6789">
+        <span class="contact-icon">📞</span>
+        <span class="contact-text">+1 (469) 813-5395</span>
+        <span class="copy-hint">📋</span>
+      </div>
+
+      <div class="contact-field" data-copy="@Mehrad_Dev">
+        <span class="contact-icon">✈️</span>
+        <span class="contact-text">@IranSniper</span>
+        <span class="copy-hint">📋</span>
+      </div>
+
+      <div class="contact-footer">
+        <span>💡 Click any field to copy</span>
       </div>
     </div>
+
+    <!-- بخش کناری -->
+    <div class="card reveal">
+      <h3>🌟 Where I shine</h3>
+      <p>Front-end craft, community ops, and music storytelling. Available for remote gigs.</p>
+      <img src="assets/logo.svg" alt="logo" style="width:100%; max-width:220px; opacity:.9; margin-top: 12px;"/>
+    </div>
+  </div>
+</section>
   </section>
 
   <footer class="container">
