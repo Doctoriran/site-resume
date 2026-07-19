@@ -7,12 +7,12 @@
   <meta name="description" content="Mehrad — Developer & Pianist. Broken inside, building outside."/>
   <title>MEHRAD — Portfolio</title>
   
-  <!-- ===== Cache Busting Meta Tags ===== -->
+  <!-- Cache Busting Meta Tags -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   
-  <!-- ===== Google Analytics ===== -->
+  <!-- Google Analytics (G-XXXXXXX رو با کد خودت عوض کن) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -47,19 +47,20 @@
         <a href="#contact" data-i="contact">Contact</a>
       </div>
       <div class="toggle">
+        <button class="btn-ghost menu-toggle" aria-label="Menu">☰</button>
         <button class="btn-ghost" data-theme>Theme</button>
         <button class="btn-ghost lang" data-lang="en">EN</button>
         <button class="btn-ghost lang" data-lang="fa">FA</button>
         <a class="btn pulse" href="./assets/Mehrad_Resume_EN.pdf" download data-i="cta">Download Resume</a>
       </div>
     </div>
-    
   </nav>
+
   <header class="hero">
     <canvas id="bg"></canvas>
     <div class="hero-content container">
       <div class="kicker" data-i="kicker">Portfolio / Musician & Full-Stack Learner</div>
-      <h1 class="reveal"> <span class="grad" data-i="h1a">Mehrad</span><br/> <span data-i="h1b">Haratian.</span></h1>
+      <h1 class="reveal"><span class="grad" data-i="h1a">Mehrad</span><br/><span data-i="h1b">Haratian.</span></h1>
       <p class="sub reveal" data-i="sub">Self-taught web developer (HTML/CSS/JS), admin for a 10k+ YouTube channel, and 5-year pianist.</p>
       <div class="row reveal">
         <a href="#projects" class="btn" data-i="see">See Projects</a>
@@ -69,43 +70,34 @@
     <div class="marquee" data-i="marquee"><span>MEHRAD • Dev • Pianist • Admin • Dreamer • Leader • Problem Solver • UI Curious • Security Curious • </span></div>
   </header>
 
-  <!-- ============================================ -->
-  <!-- ===== GLASS STATS SECTION (بخش شیشه‌ای) ===== -->
-  <!-- ============================================ -->
+  <!-- ===== GLASS STATS SECTION ===== -->
   <section class="glass-stats">
     <div class="container">
       <div class="glass-grid">
-        <!-- کارت ۱: پروژه‌ها -->
         <div class="glass-card">
           <div class="glass-icon">🚀</div>
-          <div class="glass-number" data-count="12">0</div>
+          <div class="glass-number" data-count="12">12</div>
           <div class="glass-label">Projects Completed</div>
           <div class="glass-line"></div>
           <div class="glass-sub">Web & Music</div>
         </div>
-        
-        <!-- کارت ۲: زبان‌های برنامه‌نویسی -->
         <div class="glass-card">
           <div class="glass-icon">💻</div>
-          <div class="glass-number" data-count="5">0</div>
+          <div class="glass-number" data-count="5">5</div>
           <div class="glass-label">Languages</div>
           <div class="glass-line"></div>
           <div class="glass-sub">HTML, CSS, JS, Python, C++</div>
         </div>
-        
-        <!-- کارت ۳: تجربه پیانو -->
         <div class="glass-card">
           <div class="glass-icon">🎹</div>
-          <div class="glass-number" data-count="5">0</div>
+          <div class="glass-number" data-count="5">5</div>
           <div class="glass-label">Years of Piano</div>
           <div class="glass-line"></div>
           <div class="glass-sub">Classical & Persian</div>
         </div>
-        
-        <!-- کارت ۴: جامعه / دنبال‌کنندگان -->
         <div class="glass-card">
           <div class="glass-icon">👥</div>
-          <div class="glass-number" data-count="10000">0</div>
+          <div class="glass-number" data-count="10000">10K+</div>
           <div class="glass-label">Community Members</div>
           <div class="glass-line"></div>
           <div class="glass-sub">YouTube & Telegram</div>
@@ -127,11 +119,11 @@
       <div class="card reveal">
         <h3>Admin & Ops</h3>
         <p class="admin" data-i="admin">YouTube channel admin (10k+ Member), community moderation, content planning, analytics.</p>
-        <div class="badges"><span class="badge"data-i="ops">Youtube Ops</span><span class="badge">Community</span></div>
+        <div class="badges"><span class="badge" data-i="ops">Youtube Ops</span><span class="badge">Community</span></div>
       </div>
       <div class="card reveal">
-        <h3 class="music3" data-i="music3"> Music</h3>
-        <p class="music" data-i="music2">5 years of piano. Studio & stage recording, ensemble with teachers, genre: Persian to classical</p>
+        <h3 class="music3" data-i="music3">Music</h3>
+        <p class="music" data-i="music2">5 years of piano. Studio & stage recording, ensemble with teachers, genre: Persian to classical.</p>
         <div class="badges"><span class="badge">Piano</span><span class="badge">Arrangement</span></div>
       </div>
       <div class="card reveal">
@@ -184,7 +176,6 @@
   <section class="section container" id="music">
     <h2 class="reveal" data-i="music">Music Corner</h2>
     <div class="grid grid-3">
-      <!-- Live Session Card - Updated -->
       <div class="card reveal live-session-card">
         <h3 data-i="liveTitle">Live Session</h3>
         <div class="coming-soon-wrapper">
@@ -211,37 +202,30 @@
 
   <section class="section container" id="contact">
     <div class="grid" style="grid-template-columns: 1.2fr 1fr;">
-      <!-- باکس اطلاعات تماس -->
       <div class="card reveal contact-card">
         <div class="contact-header">
           <h2>📬 Let's talk</h2>
           <p class="muted">Business / collab / gigs</p>
         </div>
-        
         <div class="contact-field" data-copy="mehrad@gmail.com">
           <span class="contact-icon">📧</span>
           <span class="contact-text">mehrad@gmail.com</span>
           <span class="copy-hint">📋</span>
         </div>
-
         <div class="contact-field" data-copy="+1 (469) 813-5395">
           <span class="contact-icon">📞</span>
           <span class="contact-text">+1 (469) 813-5395</span>
           <span class="copy-hint">📋</span>
         </div>
-
         <div class="contact-field" data-copy="@IranSniper">
           <span class="contact-icon">✈️</span>
           <span class="contact-text">@IranSniper</span>
           <span class="copy-hint">📋</span>
         </div>
-
         <div class="contact-footer">
           <span>💡 Click any field to copy</span>
         </div>
       </div>
-
-      <!-- بخش کناری -->
       <div class="card reveal">
         <h3>🌟 Where I shine</h3>
         <p>Front-end craft, community ops, and music storytelling. Available for remote gigs.</p>
