@@ -4,22 +4,34 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="theme-color" content="#0b0b0f"/>
-  <meta name="description" content="Mehrad — Developer & Pianist."/>
+  <meta name="description" content="Mehrad — Developer & Pianist. Broken inside, building outside."/>
   <title>MEHRAD — Portfolio</title>
   
-  <!-- Cache Control -->
+  <!-- Cache Busting Meta Tags -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   
+  <!-- Google Analytics (G-XXXXXXX رو با کد خودت عوض کن) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  
+  <link rel="manifest" href="manifest.webmanifest"/>
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preload" href="assets/logo.svg" as="image"/>
+  <link rel="stylesheet" href="styles.css?v=1.0.0"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   
+  <!-- Three.js CDN -->
   <script defer src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="app.js?v=1.0.0"></script>
 </head>
 <body>
   <nav class="nav">
@@ -29,17 +41,17 @@
         <strong>Mehrad</strong>
       </div>
       <div class="links">
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#music">Music</a>
-        <a href="#contact">Contact</a>
+        <a href="#skills" data-i="skils">Skills</a>
+        <a href="#projects" data-i="projects">Selected Projects</a>
+        <a href="#music" data-i="music">Music</a>
+        <a href="#contact" data-i="contact">Contact</a>
       </div>
       <div class="toggle">
-        <button class="btn-ghost menu-toggle">☰</button>
+        <button class="btn-ghost menu-toggle" aria-label="Menu">☰</button>
         <button class="btn-ghost" data-theme>Theme</button>
         <button class="btn-ghost lang" data-lang="en">EN</button>
         <button class="btn-ghost lang" data-lang="fa">FA</button>
-        <a class="btn pulse" href="./assets/Mehrad_Resume_EN.pdf" download>Download Resume</a>
+        <a class="btn pulse" href="./assets/Mehrad_Resume_EN.pdf" download data-i="cta">Download Resume</a>
       </div>
     </div>
   </nav>
@@ -47,45 +59,46 @@
   <header class="hero">
     <canvas id="bg"></canvas>
     <div class="hero-content container">
-      <div class="kicker">Portfolio / Musician & Full-Stack Learner</div>
-      <h1 class="reveal"><span class="grad">Mehrad</span><br/>Haratian.</h1>
-      <p class="sub reveal">Self-taught web developer (HTML/CSS/JS), admin for a 10k+ YouTube channel, and 5-year pianist.</p>
+      <div class="kicker" data-i="kicker">Portfolio / Musician & Full-Stack Learner</div>
+      <h1 class="reveal"><span class="grad" data-i="h1a">Mehrad</span><br/><span data-i="h1b">Haratian.</span></h1>
+      <p class="sub reveal" data-i="sub">Self-taught web developer (HTML/CSS/JS), admin for a 10k+ YouTube channel, and 5-year pianist.</p>
       <div class="row reveal">
-        <a href="#projects" class="btn">See Projects</a>
+        <a href="#projects" class="btn" data-i="see">See Projects</a>
         <span class="btn-ghost">I am a <span id="type">Developer</span></span>
       </div>
     </div>
-    <div class="marquee"><span>MEHRAD • Dev • Pianist • Admin • Dreamer • Leader • Problem Solver • UI Curious • Security Curious • </span></div>
+    <div class="marquee" data-i="marquee"><span>MEHRAD • Dev • Pianist • Admin • Dreamer • Leader • Problem Solver • UI Curious • Security Curious • </span></div>
   </header>
 
+  <!-- ===== GLASS STATS SECTION ===== -->
   <section class="glass-stats">
     <div class="container">
       <div class="glass-grid">
         <div class="glass-card">
           <div class="glass-icon">🚀</div>
-          <div class="glass-number" data-count="12">0</div>
-          <div class="glass-label">Projects</div>
+          <div class="glass-number" data-count="12">12</div>
+          <div class="glass-label">Projects Completed</div>
           <div class="glass-line"></div>
           <div class="glass-sub">Web & Music</div>
         </div>
         <div class="glass-card">
           <div class="glass-icon">💻</div>
-          <div class="glass-number" data-count="5">0</div>
+          <div class="glass-number" data-count="5">5</div>
           <div class="glass-label">Languages</div>
           <div class="glass-line"></div>
           <div class="glass-sub">HTML, CSS, JS, Python, C++</div>
         </div>
         <div class="glass-card">
           <div class="glass-icon">🎹</div>
-          <div class="glass-number" data-count="5">0</div>
-          <div class="glass-label">Years Piano</div>
+          <div class="glass-number" data-count="5">5</div>
+          <div class="glass-label">Years of Piano</div>
           <div class="glass-line"></div>
           <div class="glass-sub">Classical & Persian</div>
         </div>
         <div class="glass-card">
           <div class="glass-icon">👥</div>
-          <div class="glass-number" data-count="10000">0</div>
-          <div class="glass-label">Community</div>
+          <div class="glass-number" data-count="10000">10K+</div>
+          <div class="glass-label">Community Members</div>
           <div class="glass-line"></div>
           <div class="glass-sub">YouTube & Telegram</div>
         </div>
@@ -94,21 +107,23 @@
   </section>
 
   <section class="section container" id="skills">
-    <h2 class="reveal">Signature Skills</h2>
+    <h2 class="reveal" data-i="skills">Signature Skills</h2>
     <div class="grid grid-3">
       <div class="card reveal">
         <h3>Web Stack</h3>
-        <p>HTML5, CSS3, Modern JS (ES6+), responsive design, accessibility, SEO, performance.</p>
-        <div class="badges"><span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">UI/UX</span></div>
+        <p class="maybe" data-i="mohsen">HTML5, CSS3, Modern JS (ES6+), responsive design, accessibility, SEO, performance.</p>
+        <div class="badges">
+          <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span><span class="badge">UI/UX</span>
+        </div>
       </div>
       <div class="card reveal">
         <h3>Admin & Ops</h3>
-        <p>YouTube channel admin (10k+ Member), community moderation, content planning, analytics.</p>
-        <div class="badges"><span class="badge">Youtube Ops</span><span class="badge">Community</span></div>
+        <p class="admin" data-i="admin">YouTube channel admin (10k+ Member), community moderation, content planning, analytics.</p>
+        <div class="badges"><span class="badge" data-i="ops">Youtube Ops</span><span class="badge">Community</span></div>
       </div>
       <div class="card reveal">
-        <h3>Music</h3>
-        <p>5 years of piano. Studio & stage recording, ensemble with teachers, genre: Persian to classical.</p>
+        <h3 class="music3" data-i="music3">Music</h3>
+        <p class="music" data-i="music2">5 years of piano. Studio & stage recording, ensemble with teachers, genre: Persian to classical.</p>
         <div class="badges"><span class="badge">Piano</span><span class="badge">Arrangement</span></div>
       </div>
       <div class="card reveal">
@@ -130,31 +145,53 @@
   </section>
 
   <section class="section container" id="projects">
-    <h2 class="reveal">Selected Projects</h2>
+    <h2 class="reveal" data-i="projects">Selected Projects</h2>
     <div class="carousel">
       <div class="track">
-        <div class="slide"><div class="card"><h3>Channel Admin Suite</h3><p>Tools for message management, scheduling, and auto‑responses (YouTube + Telegram).</p><div class="badges"><span class="badge">Automation</span><span class="badge">Ops</span></div></div></div>
-        <div class="slide"><div class="card"><h3>Mehrad.dev</h3><p>This portfolio as a PWA: offline ready, 3D background, bilingual (EN/FA), dark/light.</p><div class="badges"><span class="badge">PWA</span><span class="badge">3D</span></div></div></div>
-        <div class="slide"><div class="card"><h3>Music Collab</h3><p>Recorded performances with teachers and ensembles; 5+ published videos.</p><div class="badges"><span class="badge">Piano</span><span class="badge">Recording</span></div></div></div>
+        <div class="slide">
+          <div class="card">
+            <h3>Channel Admin Suite</h3>
+            <p>Tools for message management, scheduling, and auto‑responses (YouTube + Telegram).</p>
+            <div class="badges"><span class="badge">Automation</span><span class="badge">Ops</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="card">
+            <h3>Mehrad.dev</h3>
+            <p>This portfolio as a PWA: offline ready, 3D background, bilingual (EN/FA), dark/light.</p>
+            <div class="badges"><span class="badge">PWA</span><span class="badge">3D</span></div>
+          </div>
+        </div>
+        <div class="slide">
+          <div class="card">
+            <h3>Music Collab</h3>
+            <p>Recorded performances with teachers and ensembles; 5+ published videos.</p>
+            <div class="badges"><span class="badge">Piano</span><span class="badge">Recording</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section container" id="music">
-    <h2 class="reveal">Music Corner</h2>
+    <h2 class="reveal" data-i="music">Music Corner</h2>
     <div class="grid grid-3">
       <div class="card reveal live-session-card">
-        <h3>Live Session</h3>
+        <h3 data-i="liveTitle">Live Session</h3>
         <div class="coming-soon-wrapper">
           <span class="cs-icon">🎵</span>
-          <p class="cs-text">Coming Soon...</p>
+          <p class="cs-text" data-i="liveStatus">Coming Soon...</p>
           <span class="cs-icon">🎹</span>
         </div>
-        <p class="muted">New performances are being prepared</p>
+        <p class="muted" style="margin-top: 10px; opacity: 0.7;" data-i="liveSub">New performances are being prepared</p>
       </div>
       <div class="card reveal">
         <h3>Favorite Pieces</h3>
-        <ul><li>Persian classics</li><li>Film scores</li><li>Modern ballads</li></ul>
+        <ul>
+          <li>Persian classics</li>
+          <li>Film scores</li>
+          <li>Modern ballads</li>
+        </ul>
       </div>
       <div class="card reveal">
         <h3>Request a Collab</h3>
@@ -185,27 +222,20 @@
           <span class="contact-text">@IranSniper</span>
           <span class="copy-hint">📋</span>
         </div>
-        <div class="contact-footer">💡 Click any field to copy</div>
+        <div class="contact-footer">
+          <span>💡 Click any field to copy</span>
+        </div>
       </div>
-      <div class="card reveal focus-card">
-        <h3>🎯 My Focus</h3>
-        <div class="focus-items">
-          <div class="focus-item"><span class="focus-icon">💻</span><span class="focus-text">Front-end Development</span></div>
-          <div class="focus-item"><span class="focus-icon">👥</span><span class="focus-text">Community Management</span></div>
-          <div class="focus-item"><span class="focus-icon">🎵</span><span class="focus-text">Music Storytelling</span></div>
-          <div class="focus-item"><span class="focus-icon">🌍</span><span class="focus-text">Remote Collaboration</span></div>
-        </div>
-        <div class="focus-tools">
-          <span class="tool-badge">React</span><span class="tool-badge">Node.js</span>
-          <span class="tool-badge">Python</span><span class="tool-badge">Git</span><span class="tool-badge">Figma</span>
-        </div>
-        <p class="focus-cta">🚀 Open for freelance & collab</p>
+      <div class="card reveal">
+        <h3>🌟 Where I shine</h3>
+        <p>Front-end craft, community ops, and music storytelling. Available for remote gigs.</p>
+        <img src="assets/logo.svg" alt="logo" style="width:100%; max-width:220px; opacity:.9; margin-top: 12px;"/>
       </div>
     </div>
   </section>
 
   <footer class="container">
-    <p>Made with grit, coffee, and late-night code.</p>
+    <p data-i="footer">Made with grit, coffee, and late-night code.</p>
   </footer>
 </body>
 </html>
