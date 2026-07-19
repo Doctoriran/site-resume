@@ -1,0 +1,7 @@
+MEHRAD — Resume (EN)
+Role: Front-End Developer | Pianist | Community Admin
+Skills: HTML, CSS, JavaScript, UI/UX basics, YouTube Ops, Piano (5y)
+Highlights:
+• Built bilingual PWA portfolio with 3D canvas.
+• Admin for 10k+ YouTube; message & community ops.
+• Recorded performances with teachers; 5+ videos.
