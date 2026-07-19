@@ -1,4 +1,3 @@
-
 // Language pack (EN / FA)
 const i18n = {
   en: {
@@ -26,6 +25,9 @@ const i18n = {
     message: "Message",
     send: "Send",
     sent: "Thanks! Your message is flying ✈️",
+    liveTitle: "Live Session",
+    liveStatus: "Coming Soon...",
+    liveSub: "New performances are being prepared",
   },
   fa: {
     kicker: "رزومه / موزیسین و توسعه‌دهنده وب",
@@ -52,6 +54,9 @@ const i18n = {
     message: "پیام",
     send: "ارسال",
     sent: "مرسی! پیام شما پرواز کرد ✈️",
+    liveTitle: "اجرای زنده",
+    liveStatus: "به زودی...",
+    liveSub: "اجراهای جدید در حال آماده‌سازی",
   }
 };
 
