@@ -1,71 +1,31 @@
 // ==========================================
-// i18n Language Pack (EN / FA)
+// i18n Language Pack
 // ==========================================
 const i18n = {
   en: {
     kicker: "Portfolio / Musician & Full-Stack Learner",
-    h1a: "Mehrad",
-    h1b: "Haratian",
     sub: "Self-taught web developer (HTML/CSS/JS), admin for a 10k+ YouTube channel, and 5-year pianist.",
-    mohsen:"HTML5, CSS3, Modern JS (ES6+), responsive design, accessibility, SEO, performance",
-    marquee:"MEHRAD • Dev • Pianist • Admin • Problem Solver • Security Curious",
-    admin: "YouTube channel admin (10k+ Member), community moderation, content planning, analytics.",
-    ops: "Youtube Ops",
-    music3: "Music",
-    music2:"5 years of piano. Studio & stage recording, ensemble with teachers, genre: Persian to classical.",
-    see: "see projects",
     cta: "Download Resume",
-    skils: "Skills",
     skills: "Signature Skills",
     projects: "Selected Projects",
     contact: "Contact",
     footer: "Made with grit, coffee, and late-night code.",
-    formTitle: "Let's talk",
-    formSub: "Business / collab / gigs",
-    name: "Your name",
-    email: "Email",
-    message: "Message",
-    send: "Send",
-    sent: "Thanks! Your message is flying ✈️",
-    liveTitle: "Live Session",
-    liveStatus: "Coming Soon...",
-    liveSub: "New performances are being prepared",
   },
   fa: {
     kicker: "رزومه / موزیسین و توسعه‌دهنده وب",
-    h1a: "مهراد",
-    h1b: "هراتیان",
     sub: "توسعه‌دهنده خودآموخته وب (HTML/CSS/JS)، ادمین یک کانال یوتیوب ۱۰K+ و پیانیست.",
-    mohsen:" اله الا الله",
-    marquee:"مهراد • برنامه نویس • پیانیست • ادمین • علاقه مند به امنیت و هک",
-    admin: "ادمین کانال یوتیوب (با بیش از ۱۰ هزار عضو)، مدیریت انجمن، برنامه‌ریزی محتوا، تجزیه و تحلیل.",
-    ops: "امور یوتیوب",
-    music3: "موسیقی",
-    music2: "تجربه ۵ ساله در پیانو. ضبط استودیویی و صحنه‌ای، گروه‌نوازی با اساتید، سبک: ایرانی تا کلاسیک.",
-    see: "دیدن پروژه ها",
     cta: "دانلود رزومه",
     skills: "مهارت‌های شاخص",
-    skils:"مهارت ها",
     projects: "پروژه‌های منتخب",
     contact: "تماس",
     footer: "ساخته شده با تلاش، قهوه و کدهای نیمه‌شب.",
-    formTitle: "در تماس باشیم",
-    formSub: "همکاری / پروژه / اجرا",
-    name: "نام شما",
-    email: "ایمیل",
-    message: "پیام",
-    send: "ارسال",
-    sent: "مرسی! پیام شما پرواز کرد ✈️",
-    liveTitle: "اجرای زنده",
-    liveStatus: "به زودی...",
-    liveSub: "اجراهای جدید در حال آماده‌سازی",
   }
 };
 
 let lang = localStorage.getItem("lang") || "en";
 const t = (k) => i18n[lang][k];
 
-function applyLang(){
+function applyLang() {
   document.querySelectorAll("[data-i]").forEach(el => {
     const key = el.getAttribute("data-i");
     if (i18n[lang][key]) {
@@ -75,67 +35,74 @@ function applyLang(){
   document.dir = (lang === "fa" ? "rtl" : "ltr");
 }
 
-document.addEventListener("click", (e)=>{
+document.addEventListener("click", (e) => {
   const trg = e.target.closest("[data-lang]");
-  if(trg){
+  if (trg) {
     lang = trg.getAttribute("data-lang");
     localStorage.setItem("lang", lang);
     applyLang();
   }
 });
 
+// ==========================================
+// Theme
+// ==========================================
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-let theme = localStorage.getItem("theme") || (prefersDark ? "dark":"dark");
-function setTheme(th){
-  document.documentElement.style.setProperty('--bg', th==="dark" ? '#0b0b0f':'#f7f7fb');
-  document.documentElement.style.setProperty('--bg-soft', th==="dark" ? '#101018':'#ffffff');
-  document.documentElement.style.setProperty('--card', th==="dark" ? '#121222':'#ffffff');
-  document.documentElement.style.setProperty('--text', th==="dark" ? '#e6e6f0':'#11121a');
-  document.documentElement.style.setProperty('--muted', th==="dark" ? '#9aa0aa':'#5a5f6b');
+let theme = localStorage.getItem("theme") || "dark";
+
+function setTheme(th) {
+  document.documentElement.style.setProperty('--bg', th === "dark" ? '#0b0b0f' : '#f7f7fb');
+  document.documentElement.style.setProperty('--card', th === "dark" ? '#121222' : '#ffffff');
+  document.documentElement.style.setProperty('--text', th === "dark" ? '#e6e6f0' : '#11121a');
+  document.documentElement.style.setProperty('--muted', th === "dark" ? '#9aa0aa' : '#5a5f6b');
   localStorage.setItem("theme", th);
 }
-document.addEventListener("click", e=>{
-  if(e.target.closest("[data-theme]")){
-    theme = theme==="dark" ? "light" : "dark";
+
+document.addEventListener("click", e => {
+  if (e.target.closest("[data-theme]")) {
+    theme = theme === "dark" ? "light" : "dark";
     setTheme(theme);
   }
 });
 
 // ==========================================
-// Three.js animated background
+// Three.js
 // ==========================================
 let renderer, scene, camera, points;
-function init3D(){
+
+function init3D() {
   const canvas = document.getElementById("bg");
   if (!canvas) return;
-  renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, .1, 1000);
+  camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.z = 5;
 
   const geometry = new THREE.BufferGeometry();
   const N = 4000;
-  const positions = new Float32Array(N*3);
-  for(let i=0;i<N;i++){
-    positions[i*3+0] = (Math.random()-0.5)*8;
-    positions[i*3+1] = (Math.random()-0.5)*8;
-    positions[i*3+2] = (Math.random()-0.5)*8;
+  const positions = new Float32Array(N * 3);
+  for (let i = 0; i < N; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 8;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 8;
   }
   geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
   const material = new THREE.PointsMaterial({ size: 0.02, color: 0xffffff });
   points = new THREE.Points(geometry, material);
   scene.add(points);
 
-  window.addEventListener("resize", ()=>{
+  window.addEventListener("resize", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
-    camera.aspect = window.innerWidth/window.innerHeight;
+    camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
   });
 
   animate();
 }
-function animate(){
+
+function animate() {
   requestAnimationFrame(animate);
   if (points) {
     points.rotation.y += 0.0008;
@@ -149,15 +116,20 @@ function animate(){
 // ==========================================
 // Carousel
 // ==========================================
-function setupCarousel(){
+function setupCarousel() {
   const track = document.querySelector(".track");
   if (!track) return;
-  let isDown=false, startX, scrollLeft;
-  track.addEventListener("mousedown", (e)=>{isDown=true; startX=e.pageX-track.offsetLeft; scrollLeft=track.scrollLeft;});
-  track.addEventListener("mouseleave", ()=> isDown=false);
-  track.addEventListener("mouseup", ()=> isDown=false);
-  track.addEventListener("mousemove", (e)=>{
-    if(!isDown) return;
+
+  let isDown = false, startX, scrollLeft;
+  track.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
+  });
+  track.addEventListener("mouseleave", () => isDown = false);
+  track.addEventListener("mouseup", () => isDown = false);
+  track.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - track.offsetLeft;
     const walk = (x - startX) * 2;
@@ -166,53 +138,55 @@ function setupCarousel(){
 }
 
 // ==========================================
-// Service Worker
+// Typing Effect
 // ==========================================
-if("serviceWorker" in navigator){
-  window.addEventListener("load", ()=> navigator.serviceWorker.register("./service-worker.js"));
-}
-
-// ==========================================
-// Typing effect
-// ==========================================
-(function typing(){
+(function typing() {
   const el = document.getElementById("type");
   if (!el) return;
+
   const words = ["Developer", "Pianist", "Admin", "Dreamer"];
-  let i=0, j=0, dir=1;
-  function tick(){
-    el.textContent = words[i].slice(0,j);
-    j+=dir;
-    if(j>words[i].length+6){dir=-1}
-    if(j<0){dir=1; i=(i+1)%words.length}
+  let i = 0, j = 0, dir = 1;
+
+  function tick() {
+    el.textContent = words[i].slice(0, j);
+    j += dir;
+    if (j > words[i].length + 6) { dir = -1; }
+    if (j < 0) { dir = 1; i = (i + 1) % words.length; }
     setTimeout(tick, 90);
   }
   tick();
 })();
 
 // ==========================================
-// Scroll reveal
+// Scroll Reveal
 // ==========================================
-const obs = new IntersectionObserver((entries)=>{
-  for(const e of entries){
-    if(e.isIntersecting) {
-      e.target.style.transform="translateY(0) scale(1)";
-      e.target.style.opacity=1;
-    } else {
-      e.target.style.opacity=0;
+const obs = new IntersectionObserver((entries) => {
+  for (const e of entries) {
+    if (e.isIntersecting) {
+      e.target.style.transform = "translateY(0) scale(1)";
+      e.target.style.opacity = 1;
     }
   }
-},{threshold:.2});
+}, { threshold: 0.2 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".reveal").forEach(el => {
+    el.style.transform = "translateY(18px) scale(.98)";
+    el.style.opacity = 0;
+    el.style.transition = "all .7s ease";
+    obs.observe(el);
+  });
+});
 
 // ==========================================
-// Contact Copy Feature
+// Contact Copy
 // ==========================================
 function setupContactCopy() {
-  const fields = document.querySelectorAll(".contact-field");
-  fields.forEach(field => {
+  document.querySelectorAll(".contact-field").forEach(field => {
     field.addEventListener("click", async () => {
       const text = field.getAttribute("data-copy");
       if (!text) return;
+
       try {
         await navigator.clipboard.writeText(text);
         field.classList.add("copied");
@@ -222,7 +196,7 @@ function setupContactCopy() {
           field.classList.remove("copied");
           if (hint) hint.textContent = "📋";
         }, 2000);
-      } catch (err) {
+      } catch {
         const textarea = document.createElement("textarea");
         textarea.value = text;
         document.body.appendChild(textarea);
@@ -237,83 +211,61 @@ function setupContactCopy() {
 }
 
 // ==========================================
-// Mobile Menu Toggle
+// Mobile Menu
 // ==========================================
 function setupMobileMenu() {
-  const menuToggle = document.querySelector(".menu-toggle");
+  const toggle = document.querySelector(".menu-toggle");
   const links = document.querySelector(".links");
-  if (menuToggle && links) {
-    menuToggle.addEventListener("click", () => {
-      links.classList.toggle("active");
-    });
+  if (toggle && links) {
+    toggle.addEventListener("click", () => links.classList.toggle("active"));
     links.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        links.classList.remove("active");
-      });
+      link.addEventListener("click", () => links.classList.remove("active"));
     });
   }
 }
 
 // ==========================================
-// ULTIMATE CACHE BUSTER
+// Counter Animation
 // ==========================================
-(function ultimateCacheBuster() {
-  // 1. Unregister Service Workers
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-      for(let registration of registrations) {
-        registration.unregister();
+function animateCounters() {
+  document.querySelectorAll(".glass-number").forEach(counter => {
+    const target = parseInt(counter.getAttribute("data-count"));
+    const duration = 2000;
+    const step = Math.max(1, Math.floor(target / 60));
+    let current = 0;
+
+    const update = () => {
+      current += step;
+      if (current >= target) {
+        counter.textContent = target.toLocaleString();
+        return;
       }
-    });
-  }
-  
-  // 2. Clear Cache API
-  if ('caches' in window) {
-    caches.keys().then(function(names) {
-      for (let name of names) {
-        caches.delete(name);
-      }
-    });
-  }
-  
-  // 3. Force reload all CSS and JS files with new version
-  const version = Date.now();
-  document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
-    if (link.href && !link.href.includes('fonts.googleapis.com')) {
-      try {
-        const url = new URL(link.href);
-        url.searchParams.set('v', version);
-        link.href = url.toString();
-      } catch(e) {}
-    }
+      counter.textContent = current.toLocaleString();
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          update();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    observer.observe(counter);
   });
-  document.querySelectorAll('script[src]').forEach(script => {
-    if (script.src && !script.src.includes('three.min.js') && 
-        !script.src.includes('unpkg.com') && !script.src.includes('googleapis')) {
-      try {
-        const url = new URL(script.src);
-        url.searchParams.set('v', version);
-        script.src = url.toString();
-      } catch(e) {}
-    }
-  });
-})();
+}
 
 // ==========================================
 // Onload
 // ==========================================
-window.addEventListener("DOMContentLoaded", ()=>{
+window.addEventListener("DOMContentLoaded", () => {
   setTheme(theme);
   applyLang();
   setupCarousel();
-  init3D();
   setupContactCopy();
   setupMobileMenu();
-  
-  document.querySelectorAll(".reveal").forEach(el=>{
-    el.style.transform="translateY(18px) scale(.98)";
-    el.style.opacity=0;
-    el.style.transition="all .7s ease";
-    obs.observe(el);
-  });
+  animateCounters();
+  init3D();
 });
