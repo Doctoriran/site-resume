@@ -62,9 +62,6 @@ const i18n = {
   }
 };
 
-// ==========================================
-// Language & Theme
-// ==========================================
 let lang = localStorage.getItem("lang") || "en";
 const t = (k) => i18n[lang][k];
 
@@ -105,7 +102,7 @@ document.addEventListener("click", e=>{
 });
 
 // ==========================================
-// Three.js animated background (particle nebula)
+// Three.js animated background
 // ==========================================
 let renderer, scene, camera, points;
 function init3D(){
@@ -176,43 +173,6 @@ if("serviceWorker" in navigator){
 }
 
 // ==========================================
-// Animated Counter for Glass Stats
-// ==========================================
-function animateCounters() {
-  const counters = document.querySelectorAll('.glass-number');
-  
-  counters.forEach(counter => {
-    const target = parseInt(counter.getAttribute('data-count'));
-    const duration = 2000;
-    const step = Math.max(1, Math.floor(target / 60));
-    let current = 0;
-    let isAnimated = false;
-    
-    const updateCounter = () => {
-      if (isAnimated) return;
-      current += step;
-      if (current >= target) {
-        counter.textContent = target.toLocaleString();
-        isAnimated = true;
-        return;
-      }
-      counter.textContent = current.toLocaleString();
-      requestAnimationFrame(updateCounter);
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !isAnimated) {
-          updateCounter();
-        }
-      });
-    }, { threshold: 0.3 });
-    
-    observer.observe(counter);
-  });
-}
-
-// ==========================================
 // Typing effect
 // ==========================================
 (function typing(){
@@ -249,32 +209,26 @@ const obs = new IntersectionObserver((entries)=>{
 // ==========================================
 function setupContactCopy() {
   const fields = document.querySelectorAll(".contact-field");
-  
   fields.forEach(field => {
     field.addEventListener("click", async () => {
       const text = field.getAttribute("data-copy");
       if (!text) return;
-      
       try {
         await navigator.clipboard.writeText(text);
         field.classList.add("copied");
         const hint = field.querySelector(".copy-hint");
         if (hint) hint.textContent = "✅";
-        
         setTimeout(() => {
           field.classList.remove("copied");
           if (hint) hint.textContent = "📋";
         }, 2000);
-        
       } catch (err) {
-        console.log("Copy failed:", err);
         const textarea = document.createElement("textarea");
         textarea.value = text;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand("copy");
         document.body.removeChild(textarea);
-        
         field.classList.add("copied");
         setTimeout(() => field.classList.remove("copied"), 2000);
       }
@@ -283,13 +237,31 @@ function setupContactCopy() {
 }
 
 // ==========================================
-// Auto Cache Busting (شکستن کش مرورگر)
+// Mobile Menu Toggle
+// ==========================================
+function setupMobileMenu() {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const links = document.querySelector(".links");
+  if (menuToggle && links) {
+    menuToggle.addEventListener("click", () => {
+      links.classList.toggle("active");
+    });
+    // بستن منو با کلیک روی لینک‌ها
+    links.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        links.classList.remove("active");
+      });
+    });
+  }
+}
+
+// ==========================================
+// Auto Cache Busting
 // ==========================================
 (function autoBust() {
   const version = Date.now();
   const links = document.querySelectorAll('link[rel="stylesheet"]');
   const scripts = document.querySelectorAll('script[src*=".js"]');
-  
   links.forEach(link => {
     if (link.href && !link.href.includes('fonts.googleapis.com')) {
       try {
@@ -299,7 +271,6 @@ function setupContactCopy() {
       } catch(e) {}
     }
   });
-  
   scripts.forEach(script => {
     if (script.src && !script.src.includes('three.min.js') && 
         !script.src.includes('unpkg.com') && !script.src.includes('googleapis')) {
@@ -313,18 +284,6 @@ function setupContactCopy() {
 })();
 
 // ==========================================
-// Google Analytics (اضافه کردن Measurement ID)
-// ==========================================
-// کد گوگل آنالیتیکس رو توی HTML اضافه کن:
-// <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-// <script>
-//   window.dataLayer = window.dataLayer || [];
-//   function gtag(){dataLayer.push(arguments);}
-//   gtag('js', new Date());
-//   gtag('config', 'G-XXXXXXX');
-// </script>
-
-// ==========================================
 // Onload
 // ==========================================
 window.addEventListener("DOMContentLoaded", ()=>{
@@ -332,10 +291,9 @@ window.addEventListener("DOMContentLoaded", ()=>{
   applyLang();
   setupCarousel();
   init3D();
-  animateCounters();
   setupContactCopy();
+  setupMobileMenu();
   
-  // Scroll reveal
   document.querySelectorAll(".reveal").forEach(el=>{
     el.style.transform="translateY(18px) scale(.98)";
     el.style.opacity=0;
