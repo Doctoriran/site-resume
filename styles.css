@@ -229,7 +229,79 @@ input:focus, textarea:focus{outline:2px solid rgba(255,255,255,.2)}
 .glass-card:nth-child(4) { animation-delay:0.4s }
 @keyframes glassFadeIn { to{opacity:1; transform:translateY(0)} }
 
+/* ===== Focus Card ===== */
+.focus-card {
+  padding: 1.8rem !important;
+  background: linear-gradient(145deg, rgba(255,215,0,0.03), rgba(255,215,0,0.01)) !important;
+  border: 1px solid rgba(255,215,0,0.12) !important;
+}
+.focus-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 16px 0;
+}
+.focus-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+.focus-item:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateX(4px);
+  border-color: rgba(255,215,0,0.15);
+}
+.focus-icon { font-size:1.4rem; flex-shrink:0; }
+.focus-text { font-size:0.9rem; font-weight:400; color:var(--text); }
+.focus-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 12px;
+}
+.tool-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgba(255,123,0,0.15), rgba(255,0,110,0.15));
+  border: 1px solid rgba(255,255,255,0.06);
+  color: var(--text);
+  letter-spacing: 0.3px;
+}
+.focus-cta {
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 12px 0 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,123,0,0.06));
+  border: 1px solid rgba(255,215,0,0.1);
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
 /* ===== RESPONSIVE ===== */
+@media (min-width: 769px) {
+  .track {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+  .slide {
+    min-width: unset !important;
+    scroll-snap-align: unset !important;
+  }
+}
+
 @media (max-width:1024px) {
   .glass-grid { grid-template-columns:repeat(2,1fr); gap:16px }
   .glass-card { padding:20px 14px }
@@ -256,187 +328,4 @@ input:focus, textarea:focus{outline:2px solid rgba(255,255,255,.2)}
   .btn { padding:8px 12px; font-size:0.8rem }
   .btn-ghost { padding:8px 10px; font-size:0.8rem }
   .hero { min-height:90vh; padding:80px 0 20px }
-  .hero-content { gap:12px; padding-top:20px }
-  .kicker { font-size:0.7rem; letter-spacing:0.15em }
-  h1 { font-size:clamp(28px,8vw,40px) }
-  .sub { font-size:0.9rem; padding:0 8px }
-  .section { padding:40px 0 }
-  .grid-3 { grid-template-columns:1fr; gap:16px }
-  .card { padding:16px; border-radius:14px }
-  .card h3 { font-size:0.95rem }
-  .badge { font-size:0.7rem; padding:4px 8px }
-  .slide { min-width:240px }
-  .marquee { font-size:0.75rem; padding:10px 0 }
-  .marquee span { padding-left:200%; animation-duration:25s }
-  footer { font-size:0.8rem; padding:30px 0 }
-  .glass-stats { padding:30px 0 10px }
-  .glass-grid { gap:12px }
-  .glass-card { padding:16px 10px; border-radius:16px }
-  .glass-number { font-size:2rem }
-  .glass-icon { font-size:1.8rem }
-  .glass-label { font-size:0.85rem }
-  .glass-sub { font-size:0.65rem }
-  .glass-line { width:24px; margin:6px auto }
-  .contact-card { padding:1.2rem !important }
-  .contact-header h2 { font-size:1.4rem }
-  .contact-field { padding:12px 14px; gap:10px }
-  .contact-icon { font-size:1.4rem; width:28px }
-  .contact-text { font-size:0.85rem }
-  .copy-hint { font-size:0.85rem }
-  .contact-footer { font-size:0.75rem }
-  .cs-icon { font-size:1.8rem }
-  .cs-text { font-size:1.2rem; letter-spacing:1px }
-  .coming-soon-wrapper { gap:12px }
-  .live-session-card { padding:20px 14px !important }
-  input, textarea { padding:10px 12px; font-size:0.85rem }
-  .grid[style*="grid-template-columns: 1.2fr 1fr;"] { grid-template-columns:1fr !important; gap:20px }
-}
-
-@media (max-width:420px) {
-  .glass-grid { grid-template-columns:1fr 1fr; gap:8px }
-  .glass-card { padding:12px 8px; border-radius:12px }
-  .glass-number { font-size:1.6rem }
-  .glass-icon { font-size:1.4rem }
-  .glass-label { font-size:0.7rem }
-  .glass-sub { font-size:0.55rem }
-  .glass-line { width:20px; margin:4px auto }
-  .slide { min-width:200px }
-  .contact-field { padding:10px 12px; gap:8px }
-  .contact-icon { font-size:1.2rem; width:24px }
-  .contact-text { font-size:0.75rem }
-  .copy-hint { font-size:0.7rem }
-  .cs-icon { font-size:1.4rem }
-  .cs-text { font-size:1rem }
-  .btn { padding:6px 10px; font-size:0.7rem }
-  .btn-ghost { padding:6px 8px; font-size:0.7rem }
-  h1 { font-size:clamp(22px,7vw,32px) }
-  .sub { font-size:0.8rem }
-}
-/* ===== Focus Card (جایگزین Where I shine) ===== */
-.focus-card {
-  padding: 1.8rem !important;
-  background: linear-gradient(145deg, rgba(255,215,0,0.03), rgba(255,215,0,0.01)) !important;
-  border: 1px solid rgba(255,215,0,0.12) !important;
-}
-
-.focus-items {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin: 16px 0;
-}
-
-.focus-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  background: rgba(255,255,255,0.04);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.04);
-}
-
-.focus-item:hover {
-  background: rgba(255,255,255,0.08);
-  transform: translateX(4px);
-  border-color: rgba(255,215,0,0.15);
-}
-
-.focus-icon {
-  font-size: 1.4rem;
-  flex-shrink: 0;
-}
-
-.focus-text {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--text);
-}
-
-.focus-tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0 12px;
-}
-
-.tool-badge {
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background: linear-gradient(135deg, rgba(255,123,0,0.15), rgba(255,0,110,0.15));
-  border: 1px solid rgba(255,255,255,0.06);
-  color: var(--text);
-  letter-spacing: 0.3px;
-}
-
-.focus-cta {
-  text-align: center;
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin: 12px 0 0;
-  padding: 12px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, rgba(255,215,0,0.06), rgba(255,123,0,0.06));
-  border: 1px solid rgba(255,215,0,0.1);
-  color: var(--text);
-  letter-spacing: 0.5px;
-}
-
-/* ===== رفع مشکل پروژه‌ها در پیسی ===== */
-@media (min-width: 769px) {
-  .track {
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 20px !important;
-    overflow: visible !important;
-    scroll-snap-type: none !important;
-  }
-  .slide {
-    min-width: unset !important;
-    scroll-snap-align: unset !important;
-  }
-}
-
-/* ===== ریسپانسیو برای بخش Focus ===== */
-@media (max-width: 768px) {
-  .focus-items {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .focus-item {
-    padding: 8px 12px;
-  }
-  .focus-text {
-    font-size: 0.85rem;
-  }
-  .tool-badge {
-    font-size: 0.7rem;
-    padding: 3px 10px;
-  }
-  .focus-cta {
-    font-size: 0.85rem;
-    padding: 10px;
-  }
-}
-
-@media (max-width: 420px) {
-  .focus-item {
-    padding: 6px 10px;
-  }
-  .focus-icon {
-    font-size: 1.2rem;
-  }
-  .focus-text {
-    font-size: 0.8rem;
-  }
-  .focus-tools {
-    gap: 6px;
-  }
-  .tool-badge {
-    font-size: 0.65rem;
-    padding: 2px 8px;
-  }
-}
+  .hero-content {
