@@ -6,16 +6,32 @@
   <meta name="theme-color" content="#0b0b0f"/>
   <meta name="description" content="Mehrad — Developer & Pianist. Broken inside, building outside."/>
   <title>MEHRAD — Portfolio</title>
+  
+  <!-- ===== Cache Busting Meta Tags ===== -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  
+  <!-- ===== Google Analytics ===== -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  
   <link rel="manifest" href="manifest.webmanifest"/>
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml"/>
   <link rel="preload" href="assets/logo.svg" as="image"/>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css?v=1.0.0"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
   <!-- Three.js CDN -->
   <script defer src="https://unpkg.com/three@0.159.0/build/three.min.js"></script>
-  <script defer src="app.js"></script>
+  <script defer src="app.js?v=1.0.0"></script>
 </head>
 <body>
   <nav class="nav">
@@ -52,6 +68,51 @@
     </div>
     <div class="marquee" data-i="marquee"><span>MEHRAD • Dev • Pianist • Admin • Dreamer • Leader • Problem Solver • UI Curious • Security Curious • </span></div>
   </header>
+
+  <!-- ============================================ -->
+  <!-- ===== GLASS STATS SECTION (بخش شیشه‌ای) ===== -->
+  <!-- ============================================ -->
+  <section class="glass-stats">
+    <div class="container">
+      <div class="glass-grid">
+        <!-- کارت ۱: پروژه‌ها -->
+        <div class="glass-card">
+          <div class="glass-icon">🚀</div>
+          <div class="glass-number" data-count="12">0</div>
+          <div class="glass-label">Projects Completed</div>
+          <div class="glass-line"></div>
+          <div class="glass-sub">Web & Music</div>
+        </div>
+        
+        <!-- کارت ۲: زبان‌های برنامه‌نویسی -->
+        <div class="glass-card">
+          <div class="glass-icon">💻</div>
+          <div class="glass-number" data-count="5">0</div>
+          <div class="glass-label">Languages</div>
+          <div class="glass-line"></div>
+          <div class="glass-sub">HTML, CSS, JS, Python, C++</div>
+        </div>
+        
+        <!-- کارت ۳: تجربه پیانو -->
+        <div class="glass-card">
+          <div class="glass-icon">🎹</div>
+          <div class="glass-number" data-count="5">0</div>
+          <div class="glass-label">Years of Piano</div>
+          <div class="glass-line"></div>
+          <div class="glass-sub">Classical & Persian</div>
+        </div>
+        
+        <!-- کارت ۴: جامعه / دنبال‌کنندگان -->
+        <div class="glass-card">
+          <div class="glass-icon">👥</div>
+          <div class="glass-number" data-count="10000">0</div>
+          <div class="glass-label">Community Members</div>
+          <div class="glass-line"></div>
+          <div class="glass-sub">YouTube & Telegram</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="section container" id="skills">
     <h2 class="reveal" data-i="skills">Signature Skills</h2>
